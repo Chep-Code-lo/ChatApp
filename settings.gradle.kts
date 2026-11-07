@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ChatApp"
 include(":app")
- 
+project(":app").projectDir = file("mobile/app")
