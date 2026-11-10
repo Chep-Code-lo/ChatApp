@@ -189,7 +189,7 @@ CREATE TABLE friend_requests (
             ),
             NULL
         )
-    ) STORED COMMENT 'Duy nhất theo cặp khi đang chờ: chặn hai người gửi đồng thời',
+    ) STORED COMMENT 'Ngăn tạo lời mời trùng giữa hai người khi đang chờ',
     PRIMARY KEY (id),
     UNIQUE KEY uq_friend_req_pending (pending_pair),
     KEY idx_friend_req_receiver (receiver_id, status, id),
@@ -262,8 +262,8 @@ CREATE TABLE conversation_members (
     joined_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     left_at DATETIME(3) NULL,
     left_reason ENUM('LEFT', 'REMOVED') NULL,
-    last_read_message_id BIGINT UNSIGNED NULL COMMENT 'Mốc đọc, chỉ tiến lên',
-    unread_count INT UNSIGNED NOT NULL DEFAULT 0,
+    last_read_message_id BIGINT UNSIGNED NULL COMMENT 'Mã tin nhắn cuối cùng đã đọc',
+    unread_count INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Số tin nhắn chưa đọc',
     active_owner_of BIGINT UNSIGNED GENERATED ALWAYS AS (
         IF(
             role = 'OWNER'
@@ -271,7 +271,7 @@ CREATE TABLE conversation_members (
             conversation_id,
             NULL
         )
-    ) STORED COMMENT 'Mỗi nhóm tối đa một OWNER đang hoạt động',
+    ) STORED COMMENT 'Đảm bảo mỗi nhóm chỉ có một trưởng nhóm đang hoạt động',
     PRIMARY KEY (conversation_id, user_id),
     UNIQUE KEY uq_one_owner (active_owner_of),
     KEY idx_member_user (user_id, left_at, conversation_id),
@@ -304,10 +304,10 @@ CREATE TABLE direct_conversations (
 CREATE TABLE group_invite_links (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'inviteId',
     conversation_id BIGINT UNSIGNED NOT NULL,
-    token_hash CHAR(64) CHARACTER SET ascii NOT NULL COMMENT 'inviteToken chỉ hiện một lần, lưu dạng băm',
-    created_by BIGINT UNSIGNED NOT NULL,
-    created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    expires_at DATETIME(3) NOT NULL COMMENT '1-168 giờ, mặc định 24',
+    token_hash CHAR(64) CHARACTER SET ascii NOT NULL COMMENT 'Mã mời được lưu dưới dạng mã băm',
+    created_by BIGINT UNSIGNED NOT NULL COMMENT 'Người tạo lời mời',
+    created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT 'Thời điểm tạo lời mời',
+    expires_at DATETIME(3) NOT NULL COMMENT 'Thời điểm hết hạn lời mời, mặc định 24 giờ, tối đa 168 giờ',
     revoked_at DATETIME(3) NULL,
     PRIMARY KEY (id),
     UNIQUE KEY uq_invite_token (token_hash),
@@ -327,7 +327,7 @@ CREATE TABLE messages (
     type ENUM('TEXT', 'IMAGE', 'VIDEO', 'FILE', 'VOICE') NOT NULL DEFAULT 'TEXT',
     original_text TEXT NULL,
     reply_to_id BIGINT UNSIGNED NULL,
-    forwarded_from_message_id BIGINT UNSIGNED NULL COMMENT 'Nội bộ, không trả ra API',
+    forwarded_from_message_id BIGINT UNSIGNED NULL COMMENT 'Mã tin nhắn gốc được chuyển tiếp, không trả về qua API',
     created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     PRIMARY KEY (id),
     UNIQUE KEY uq_message_dedup (sender_id, client_message_id),
@@ -366,10 +366,10 @@ ADD
 
 CREATE TABLE message_attachments (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    conversation_id BIGINT UNSIGNED NOT NULL COMMENT 'Phi chuẩn hóa để xem kho tệp theo hội thoại',
-    message_id BIGINT UNSIGNED NOT NULL,
-    file_id BIGINT UNSIGNED NOT NULL,
-    kind ENUM('IMAGE', 'VIDEO', 'FILE', 'VOICE') NOT NULL COMMENT 'Bằng files.kind (ép bằng khóa ngoại kép fk_attachment_file)',
+    conversation_id BIGINT UNSIGNED NOT NULL COMMENT 'Mã cuộc trò chuyện chứa tệp đính kèm',
+    message_id BIGINT UNSIGNED NOT NULL COMMENT 'Mã tin nhắn chứa tệp đính kèm',
+    file_id BIGINT UNSIGNED NOT NULL COMMENT 'Mã tệp đính kèm',
+    kind ENUM('IMAGE', 'VIDEO', 'FILE', 'VOICE') NOT NULL COMMENT 'Loại tệp đính kèm, phải trùng với loại trong bảng files',
     position TINYINT UNSIGNED NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
     UNIQUE KEY uq_attachment_msg_file (message_id, file_id),
@@ -395,8 +395,8 @@ CREATE TABLE message_reactions (
 CREATE TABLE forward_requests (
     sender_id BIGINT UNSIGNED NOT NULL,
     client_request_id CHAR(36) CHARACTER SET ascii NOT NULL,
-    request_hash CHAR(64) CHARACTER SET ascii NOT NULL COMMENT 'Hash của tin nguồn + danh sách đích',
-    result_json JSON NOT NULL COMMENT 'Các tin đã tạo, trả lại khi gửi lặp',
+    request_hash CHAR(64) CHARACTER SET ascii NOT NULL COMMENT 'Mã hash của tin nhắn gốc và danh sách người nhận',
+    result_json JSON NOT NULL COMMENT 'Lưu kết quả gửi tin nhắn để tránh gửi trùng',
     created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     PRIMARY KEY (sender_id, client_request_id),
     CONSTRAINT fk_forward_sender FOREIGN KEY (sender_id) REFERENCES users (id)
@@ -432,8 +432,8 @@ CREATE TABLE calls (
         'FAILED',
         'ENDED'
     ) NOT NULL DEFAULT 'RINGING',
-    caller_session_id CHAR(36) CHARACTER SET ascii NULL COMMENT 'Phiên người gọi khởi tạo',
-    accepted_session_id CHAR(36) CHARACTER SET ascii NULL COMMENT 'Phiên người nhận thắng khi accept',
+    caller_session_id CHAR(36) CHARACTER SET ascii NULL COMMENT 'Phiên đăng nhập của người gọi',
+    accepted_session_id CHAR(36) CHARACTER SET ascii NULL COMMENT 'Phiên đăng nhập của người nhận đã chấp nhận cuộc gọi',
     caller_media_state ENUM('PENDING', 'CONNECTED', 'FAILED') NOT NULL DEFAULT 'PENDING',
     callee_media_state ENUM('PENDING', 'CONNECTED', 'FAILED') NOT NULL DEFAULT 'PENDING',
     end_reason ENUM(
@@ -443,11 +443,11 @@ CREATE TABLE calls (
         'CONNECTION_FAILED'
     ) NULL,
     created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    ring_expires_at DATETIME(3) NOT NULL COMMENT 'created_at + 30 giây',
-    accepted_at DATETIME(3) NULL,
-    setup_deadline_at DATETIME(3) NULL COMMENT 'accepted_at + 30 giây',
-    connected_at DATETIME(3) NULL,
-    control_lost_at DATETIME(3) NULL COMMENT 'Mốc mất WebSocket, quá 30 giây thì ENDED/DISCONNECTED',
+    ring_expires_at DATETIME(3) NOT NULL COMMENT 'Hết thời gian chờ trả lời sau 30 giây',
+    accepted_at DATETIME(3) NULL COMMENT 'Thời điểm chấp nhận cuộc gọi',
+    setup_deadline_at DATETIME(3) NULL COMMENT 'Hết thời gian chờ kết nối sau 30 giây',
+    connected_at DATETIME(3) NULL COMMENT 'Thời điểm kết nối thành công',
+    control_lost_at DATETIME(3) NULL COMMENT 'Thời điểm mất kết nối WebSocket, quá 30 giây sẽ kết thúc cuộc gọi',
     ended_at DATETIME(3) NULL,
     PRIMARY KEY (id),
     UNIQUE KEY uq_call_dedup (caller_id, client_call_id),
