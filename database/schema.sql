@@ -8,9 +8,6 @@ SET
 SET
     time_zone = '+00:00';
 
-SET
-    FOREIGN_KEY_CHECKS = 0;
-
 CREATE TABLE languages(
     code VARCHAR(35) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
     display_name VARCHAR(100) NOT NULL,
@@ -25,12 +22,11 @@ VALUES
     ('ja', '日本語'),
     ('ko', '한국어'),
     ('zh-Hans', '简体中文'),
-    ('zn-Hant', '繁體中文'),
+    ('zh-Hant', '繁體中文'),
     ('fr', 'Français'),
     ('de', 'Deutsch'),
     ('th', 'ไทย'),
-    ('es', 'Español'),
-    ('und', 'Không xác định') ON DUPLICATE KEY
+    ('es', 'Español') ON DUPLICATE KEY
 UPDATE
     display_name =
 VALUES
@@ -211,22 +207,6 @@ CREATE TABLE friendships (
 ) ENGINE = InnoDB;
 
 CREATE TABLE conversations (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    type ENUM('DIRECT', 'GROUP') NOT NULL,
-    title VARCHAR(150),
-    created_by BIGINT UNSIGNED NOT NULL,
-    created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    FOREIGN KEY (created_by) REFERENCES users(id),
-    CHECK (
-        type <> 'GROUP'
-        OR (
-            title IS NOT NULL
-            AND CHAR_LENGTH(TRIM(title)) > 0
-        )
-    )
-) ENGINE = InnoDB;
-
-CREATE TABLE conversations (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     type ENUM('DIRECT', 'GROUP') NOT NULL,
     title VARCHAR(100) NULL,
@@ -316,8 +296,6 @@ CREATE TABLE group_invite_links (
     CONSTRAINT fk_invite_creator FOREIGN KEY (created_by) REFERENCES users (id),
     CONSTRAINT ck_invite_expiry CHECK (expires_at > created_at)
 ) ENGINE = InnoDB;
-
-NGINE = InnoDB;
 
 CREATE TABLE messages (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -461,7 +439,10 @@ CREATE TABLE calls (
     CONSTRAINT fk_call_accepted FOREIGN KEY (accepted_session_id) REFERENCES auth_sessions (id) ON DELETE
     SET
         NULL,
-        CONSTRAINT ck_call_self CHECK (caller_id <> callee_id)
+        CONSTRAINT ck_call_self CHECK (caller_id <> callee_id),
+        CONSTRAINT ck_call_end CHECK (
+            (status IN ('RINGING', 'ACCEPTED', 'CONNECTED')) = (ended_at IS NULL)
+        )
 ) ENGINE = InnoDB;
 
 CREATE TABLE active_calls (
