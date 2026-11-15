@@ -1,3 +1,54 @@
 <resources>
     <string name="app_name">ChatApp</string>
+
+    <!-- Person 3: contacts and groups. Mock content only, API integration comes later. -->
+    <string name="group_list_title">Nhóm và danh bạ</string>
+    <string name="group_list_subtitle">Khung giao diện thử nghiệm cho phần chat nhóm</string>
+    <string name="group_create_action">Tạo nhóm</string>
+    <string name="group_add_friend_action">Thêm bạn</string>
+    <string name="group_your_groups">Nhóm của bạn</string>
+    <string name="group_sample_name">Nhóm học Android</string>
+    <string name="group_sample_summary">4 thành viên · Tin nhắn mới lúc 10:30</string>
+    <string name="group_open_conversation_action">Mở trò chuyện</string>
+    <string name="group_view_detail_action">Chi tiết</string>
+
+    <string name="group_create_title">Tạo nhóm mới</string>
+    <string name="group_create_subtitle">Đặt tên nhóm và chọn thành viên từ danh bạ</string>
+    <string name="group_avatar_placeholder">NHÓM</string>
+    <string name="group_name_hint">Tên nhóm</string>
+    <string name="group_members_label">Thành viên đã chọn</string>
+    <string name="group_members_placeholder">Lan, Minh, An</string>
+    <string name="group_create_submit_action">Tạo nhóm</string>
+
+    <string name="group_conversation_title">Nhóm học Android</string>
+    <string name="group_conversation_status">4 thành viên</string>
+    <string name="group_message_sender_one">Lan</string>
+    <string name="group_message_one">Mọi người hoàn thành giao diện chưa?</string>
+    <string name="group_message_sender_two">Bạn</string>
+    <string name="group_message_two">Mình đang dựng khung trước nhé.</string>
+    <string name="group_message_hint">Nhập tin nhắn…</string>
+    <string name="group_send_action">Gửi</string>
+
+    <string name="group_detail_title">Chi tiết nhóm</string>
+    <string name="group_detail_member_count">4 thành viên</string>
+    <string name="group_detail_role">Vai trò của bạn: Chủ nhóm</string>
+    <string name="group_detail_add_member_action">Thêm thành viên</string>
+    <string name="group_detail_invite_action">Tạo link mời</string>
+    <string name="group_detail_leave_action">Rời nhóm</string>
+
+    <string name="group_add_friend_title">Tìm và thêm bạn</string>
+    <string name="group_add_friend_subtitle">Tìm theo tên hoặc số điện thoại</string>
+    <string name="group_search_hint">Nhập tên hoặc số điện thoại</string>
+    <string name="group_search_action">Tìm kiếm</string>
+    <string name="group_search_result_title">Nguyễn Minh Anh</string>
+    <string name="group_search_result_subtitle">Chưa có trong danh bạ</string>
+    <string name="group_search_result_initials" translatable="false">MA</string>
+    <string name="group_send_friend_request_action">Kết bạn</string>
+
+    <string name="group_mock_create_message">Bản khung: sẽ nối API tạo nhóm sau</string>
+    <string name="group_mock_send_message">Bản khung: sẽ nối API gửi tin nhắn sau</string>
+    <string name="group_mock_invite_message">Bản khung: sẽ nối API link mời sau</string>
+    <string name="group_mock_leave_message">Bản khung: sẽ nối API rời nhóm sau</string>
+    <string name="group_mock_search_message">Bản khung: sẽ nối API tìm người sau</string>
+    <string name="group_mock_friend_request_message">Bản khung: sẽ nối API kết bạn sau</string>
 </resources>
