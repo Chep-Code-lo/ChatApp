@@ -1,1 +1,10 @@
 E:\ChatApp\backend\src\main\java\com\example\chatapp\ChatAppApplication.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\dto\ApiError.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\dto\AttachmentDto.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\dto\CursorPage.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\dto\RealtimeEvent.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\exception\ApiException.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\exception\GlobalExceptionHandler.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\exception\MethodArgumentNotVaildException.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\security\CurrentUser.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\config\RequestIdFilter.java

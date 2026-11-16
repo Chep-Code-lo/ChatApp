@@ -1,1 +1,6 @@
+com\example\chatapp\common\dto\ApiError.class
+com\example\chatapp\common\exception\MethodArgumentNotVaildException.class
+com\example\chatapp\common\dto\ApiError$ErroDetail.class
 com\example\chatapp\ChatAppApplication.class
+com\example\chatapp\common\exception\GlobalExceptionHandler.class
+com\example\chatapp\common\exception\ApiException.class

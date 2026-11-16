@@ -1,4 +1,4 @@
 package com.example.chatapp.translation;
 
-public class TranslationPolicy {
+public final class TranslationPolicy {
 }
