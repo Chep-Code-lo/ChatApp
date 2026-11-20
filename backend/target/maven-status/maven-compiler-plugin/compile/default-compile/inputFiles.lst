@@ -6,5 +6,10 @@ E:\ChatApp\backend\src\main\java\com\example\chatapp\common\dto\RealtimeEvent.ja
 E:\ChatApp\backend\src\main\java\com\example\chatapp\common\exception\ApiException.java
 E:\ChatApp\backend\src\main\java\com\example\chatapp\common\exception\GlobalExceptionHandler.java
 E:\ChatApp\backend\src\main\java\com\example\chatapp\common\exception\MethodArgumentNotVaildException.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\security\AccessTokenVerifier.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\security\AuthenticatedUser.java
 E:\ChatApp\backend\src\main\java\com\example\chatapp\common\security\CurrentUser.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\security\JsonMapper.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\security\RestAuthenticationEntryPoint.java
+E:\ChatApp\backend\src\main\java\com\example\chatapp\common\security\SecurityErrorWriter.java
 E:\ChatApp\backend\src\main\java\com\example\chatapp\config\RequestIdFilter.java
