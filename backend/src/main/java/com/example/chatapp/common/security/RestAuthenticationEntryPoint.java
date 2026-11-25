@@ -19,7 +19,7 @@ public class RestAuthenticationEntryPoint
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)
-            throws IOException {
+            throws IOException { 
         errorWriter.write(response, HttpStatus.UNAUTHORIZED, "UNAUTHORIZED",
                 "Bạn cần đăng nhập để thực hiện thao tác này ");
     }
