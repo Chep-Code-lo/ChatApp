@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="luma_page_padding">24dp</dimen><dimen name="luma_space_xs">4dp</dimen><dimen name="luma_space_sm">8dp</dimen><dimen name="luma_space_md">12dp</dimen><dimen name="luma_space_lg">16dp</dimen><dimen name="luma_space_xl">24dp</dimen><dimen name="luma_space_xxl">32dp</dimen><dimen name="luma_corner">24dp</dimen><dimen name="luma_touch_target">48dp</dimen>
+</resources>

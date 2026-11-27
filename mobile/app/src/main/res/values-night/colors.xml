@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="luma_background">#0B1014</color>
+    <color name="luma_surface">#252B30</color>
+    <color name="luma_elevated">#30373D</color>
+    <color name="luma_text">#F4F6F7</color>
+    <color name="luma_secondary">#A3ABB2</color>
+    <color name="luma_accent">#A8D948</color>
+    <color name="luma_accent_text">#A8D948</color>
+    <color name="luma_on_accent">#0B1014</color>
+    <color name="luma_outline">#2B333A</color>
+    <color name="luma_tint">#1D2B1B</color>
+    <color name="luma_danger">#FF9999</color>
+    <color name="luma_press">#22FFFFFF</color>
+    <color name="luma_white">#FFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

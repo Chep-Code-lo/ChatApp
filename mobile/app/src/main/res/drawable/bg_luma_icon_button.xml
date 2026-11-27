@@ -1,0 +1,1 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/luma_press"><item android:drawable="@drawable/bg_luma_surface"/></ripple>
