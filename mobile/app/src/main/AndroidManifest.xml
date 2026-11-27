@@ -13,19 +13,29 @@
         android:theme="@style/Theme.ChatApp">
         <activity
             android:name=".group.GroupAddFriendActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ChatApp.Group"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".group.GroupDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ChatApp.Group"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".group.GroupConversationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ChatApp.Group"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".group.GroupCreateActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ChatApp.Group"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".group.GroupListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ChatApp.Group"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
