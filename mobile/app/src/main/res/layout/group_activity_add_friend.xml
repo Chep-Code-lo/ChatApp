@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:id="@+id/screenRoot" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/luma_background" tools:context=".group.GroupAddFriendActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/screenRoot" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/luma_background" tools:context=".group.GroupAddFriendActivity">
     <include layout="@layout/common_toolbar"/>
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="24dp" android:paddingEnd="24dp" android:paddingTop="8dp">
         <TextView android:id="@+id/groupFriendTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/group_ui_find_title" android:textAppearance="@style/Text.Luma.Title30"/>
