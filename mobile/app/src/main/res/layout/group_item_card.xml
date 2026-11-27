@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="14dp" app:cardBackgroundColor="@color/group_ui_surface" app:cardCornerRadius="24dp" app:cardElevation="0dp" app:strokeWidth="1dp" app:strokeColor="@color/group_ui_outline">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="18dp" android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <com.google.android.material.card.MaterialCardView android:layout_width="52dp" android:layout_height="52dp" app:cardCornerRadius="18dp" app:cardElevation="0dp" app:strokeWidth="0dp" app:cardBackgroundColor="@color/group_ui_accent">
+                <androidx.appcompat.widget.AppCompatImageView android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" app:srcCompat="@drawable/lucide_users" app:tint="@color/group_ui_on_accent" android:importantForAccessibility="no" />
+            </com.google.android.material.card.MaterialCardView>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+                <TextView android:id="@+id/groupCardName" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="2" android:ellipsize="end" android:textAppearance="@style/Text.Group.Body15" android:fontFamily="@font/manrope_bold" />
+                <TextView android:id="@+id/groupCardMembers" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textAppearance="@style/Text.Group.Caption11" android:textColor="@color/group_ui_accent_text" />
+            </LinearLayout>
+            <TextView android:id="@+id/groupCardUnread" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="8dp" android:paddingEnd="8dp" android:textAppearance="@style/Text.Group.Label13" android:textColor="@color/group_ui_accent_text" />
+        </LinearLayout>
+        <TextView android:id="@+id/groupCardPreview" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:maxLines="2" android:ellipsize="end" android:textAppearance="@style/Text.Group.Label13" android:textColor="@color/group_ui_secondary" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton android:id="@+id/groupOpenConversationButton" style="@style/Widget.Group.PrimaryButton" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="@string/group_ui_open_chat" app:icon="@drawable/lucide_message_circle" app:iconGravity="textStart" app:iconTint="@color/group_ui_on_accent" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/groupOpenDetailButton" style="@style/Widget.Group.OutlinedButton" android:layout_width="wrap_content" android:layout_height="48dp" android:layout_marginStart="10dp" android:text="@string/group_ui_detail" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
