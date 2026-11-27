@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="group_ui_accent">#A8D948</color>
+    <color name="group_ui_accent_text">#4C6B17</color>
+    <color name="group_ui_background">#F7F8FA</color>
+    <color name="group_ui_danger">#B83D3D</color>
+    <color name="group_ui_on_accent">#0B1014</color>
+    <color name="group_ui_outline">#DDE3E8</color>
+    <color name="group_ui_press">#220B1014</color>
+    <color name="group_ui_secondary">#5C6973</color>
+    <color name="group_ui_surface">#FFFFFF</color>
+    <color name="group_ui_text">#172027</color>
+    <color name="group_ui_tint">#EAF4DA</color>
+</resources>

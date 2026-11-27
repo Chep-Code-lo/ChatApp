@@ -1,0 +1,1 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/group_ui_press"><item android:drawable="@drawable/bg_group_surface"/></ripple>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Shape.Group.Avatar" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="ShapeAppearance.Group.Attachment" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">14dp</item>
+    </style>
+    <style name="Text.Group" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="fontFamily">@font/manrope_regular</item>
+        <item name="android:textColor">@color/group_ui_text</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.Group.Body" parent="Text.Group">
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="Text.Group.Body15" parent="Text.Group.Body" />
+    <style name="Text.Group.Caption" parent="Text.Group">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="fontFamily">@font/manrope_medium</item>
+        <item name="android:textColor">@color/group_ui_secondary</item>
+    </style>
+    <style name="Text.Group.Caption11" parent="Text.Group.Caption" />
+    <style name="Text.Group.Headline" parent="Text.Group">
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="fontFamily">@font/manrope_bold</item>
+    </style>
+    <style name="Text.Group.Headline22" parent="Text.Group.Headline" />
+    <style name="Text.Group.Label" parent="Text.Group">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/manrope_semibold</item>
+        <item name="fontFamily">@font/manrope_semibold</item>
+    </style>
+    <style name="Text.Group.Label13" parent="Text.Group.Label" />
+    <style name="Text.Group.Title" parent="Text.Group">
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">@font/manrope_extrabold</item>
+        <item name="fontFamily">@font/manrope_extrabold</item>
+    </style>
+    <style name="Text.Group.Title30" parent="Text.Group.Title" />
+    <style name="Theme.ChatApp.Group" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/group_ui_accent</item>
+        <item name="colorOnPrimary">@color/group_ui_on_accent</item>
+        <item name="colorPrimaryContainer">@color/group_ui_tint</item>
+        <item name="colorOnPrimaryContainer">@color/group_ui_text</item>
+        <item name="colorSecondary">@color/group_ui_accent</item>
+        <item name="colorOnSecondary">@color/group_ui_on_accent</item>
+        <item name="colorSurface">@color/group_ui_surface</item>
+        <item name="colorOnSurface">@color/group_ui_text</item>
+        <item name="colorOnSurfaceVariant">@color/group_ui_secondary</item>
+        <item name="colorOutline">@color/group_ui_outline</item>
+        <item name="colorError">@color/group_ui_danger</item>
+        <item name="colorControlActivated">@color/group_ui_accent_text</item>
+        <item name="android:colorBackground">@color/group_ui_background</item>
+        <item name="android:windowBackground">@color/group_ui_background</item>
+        <item name="android:textColorPrimary">@color/group_ui_text</item>
+        <item name="android:textColorSecondary">@color/group_ui_secondary</item>
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/group_ui_background</item>
+        <item name="materialButtonStyle">@style/Widget.Group.PrimaryButton</item>
+        <item name="textInputStyle">@style/Widget.Group.Input</item>
+        <item name="editTextStyle">@style/Widget.Group.EditText</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+    <style name="Widget.Group.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/bg_group_input</item>
+        <item name="android:textColor">@color/group_ui_text</item>
+        <item name="android:textColorHint">@color/group_ui_secondary</item>
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="fontFamily">@font/manrope_regular</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:minHeight">52dp</item>
+    </style>
+    <style name="Widget.Group.IconButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/bg_group_icon_button</item>
+        <item name="android:padding">13dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:tint">@color/group_ui_text</item>
+        <item name="tint">@color/group_ui_text</item>
+    </style>
+    <style name="Widget.Group.Input" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/group_ui_surface</item>
+        <item name="boxStrokeColor">@color/group_ui_input_stroke</item>
+        <item name="hintTextColor">@color/group_ui_secondary</item>
+        <item name="android:textColorHint">@color/group_ui_secondary</item>
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+        <item name="endIconTint">@color/group_ui_secondary</item>
+    </style>
+    <style name="Widget.Group.OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:fontFamily">@font/manrope_semibold</item>
+        <item name="fontFamily">@font/manrope_semibold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/group_ui_text</item>
+        <item name="strokeColor">@color/group_ui_outline</item>
+        <item name="cornerRadius">24dp</item>
+        <item name="iconTint">@color/group_ui_text</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+    <style name="Widget.Group.PrimaryButton" parent="Widget.Material3.Button">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+        <item name="fontFamily">@font/manrope_bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/group_ui_on_accent</item>
+        <item name="backgroundTint">@color/group_ui_accent</item>
+        <item name="cornerRadius">28dp</item>
+        <item name="iconTint">@color/group_ui_on_accent</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+</resources>
