@@ -1,79 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/screenRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
+    android:background="@color/luma_background"
+    android:orientation="vertical"
     tools:context=".group.GroupCreateActivity">
 
-    <LinearLayout
+    <include layout="@layout/common_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/group_create_title"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:gravity="center"
-            android:text="@string/group_create_subtitle"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
-
-        <TextView
-            android:layout_width="88dp"
-            android:layout_height="88dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/group_avatar_background"
-            android:gravity="center"
-            android:text="@string/group_avatar_placeholder"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="@string/group_name_hint"
-            app:boxBackgroundMode="outline">
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="20dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/groupNameInput"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapSentences" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="@string/group_ui_new_group"
+                android:textAppearance="@style/Text.Luma.Title30" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/group_members_label"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/group_ui_create_subtitle"
+                android:textAppearance="@style/Text.Luma.Label13"
+                android:textColor="@color/luma_secondary" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/group_message_incoming_background"
-            android:text="@string/group_members_placeholder"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="@color/luma_accent"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/groupCreateSubmitButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="@string/group_create_submit_action" />
-    </LinearLayout>
-</ScrollView>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/lucide_users"
+                    app:tint="@color/luma_on_accent" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/groupNameLayout"
+                style="@style/Widget.Luma.Input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:hint="@string/group_ui_name_label"
+                app:counterEnabled="true"
+                app:counterMaxLength="40"
+                app:helperText="@string/group_ui_name_helper">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/groupNameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/group_ui_name_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences"
+                    android:maxLength="40"
+                    android:minHeight="56dp"
+                    android:singleLine="true"
+                    android:textAppearance="@style/Text.Luma.Body15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/groupSelectedCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:textAppearance="@style/Text.Luma.Caption11"
+                android:textColor="@color/luma_accent_text"
+                tools:text="ĐÃ CHỌN · 2" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/groupSelectedChips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:chipSpacingHorizontal="8dp"
+                app:chipSpacingVertical="4dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/group_ui_you_included"
+                android:textAppearance="@style/Text.Luma.Caption11"
+                android:textColor="@color/luma_secondary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/group_ui_pick_members"
+                android:textAppearance="@style/Text.Luma.Body15" />
+
+            <EditText
+                android:id="@+id/groupCreateSearchInput"
+                style="@style/Widget.Luma.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:drawableStart="@drawable/lucide_search"
+                android:drawablePadding="12dp"
+                android:drawableTint="@color/luma_secondary"
+                android:hint="@string/group_ui_find_contact"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:singleLine="true" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/groupMembersRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="4"
+                tools:listitem="@layout/group_item_person" />
+
+            <TextView
+                android:id="@+id/groupCreateEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="24dp"
+                android:text="@string/group_ui_no_results"
+                android:textAppearance="@style/Text.Luma.Label13"
+                android:textColor="@color/luma_secondary"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/groupCreateSubmitButton"
+        style="@style/Widget.Luma.PrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/group_ui_create"
+        app:icon="@drawable/lucide_arrow_right"
+        app:iconGravity="textEnd"
+        app:iconTint="@color/luma_on_accent" />
+</LinearLayout>
